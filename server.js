@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Success" });
 });
 app.get("/home", (req, res) => {
-  const { username } = req.body;
+  const { username } = req.params;
   res.json({ message: username });
 });
 const port = 3000;
