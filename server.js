@@ -13,6 +13,4 @@ app.get("/home", (req, res) => {
 });
 const port = 3000;
 
-app.listen(port, () => {
-  console.log(port);
-});
+module.exports = app;
