@@ -1,5 +1,12 @@
 const supabase = require("../../config/supabase");
 
+async function checkAdmin(req, res, next) {
+  if (!req.user.admin) {
+    return res.sendStatus(401);
+  }
+  next();
+}
+
 async function addProduct(req, res) {
   const {
     name,
@@ -11,11 +18,6 @@ async function addProduct(req, res) {
     imageUrl,
   } = req.body;
 
-  const userId = req.user.userId;
-  console.log(userId);
-
-  console.log(req.body);
-
   try {
     const productData = {
       name,
@@ -23,11 +25,12 @@ async function addProduct(req, res) {
       price,
       stock_quantity: stockQuantity,
       category_id: category,
-      unit: priceUnit,
+      weight_unit: priceUnit,
       image_url: imageUrl,
     };
     const { error } = await supabase.from("products").insert(productData);
     if (error) {
+      console.error(error);
       if (error.code === "23505") {
         return res
           .status(409)
@@ -88,4 +91,4 @@ async function updateProduct(req, res) {
   }
 }
 
-module.exports = { addProduct, updateProduct };
+module.exports = { addProduct, updateProduct, checkAdmin };

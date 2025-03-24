@@ -6,6 +6,8 @@ const app = express();
 const authRoutes = require("./src/auth/routes/AuthRoutes");
 const productRoutes = require("./src/products/routes/ProductRoutes");
 const adminRoutes = require("./src/admin/routes/AdminRoutes");
+const checkoutRoutes = require("./src/checkout/routes/CheckoutRoutes");
+const testRoutes = require("./src/test/routes/TestRoutes");
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
@@ -21,6 +23,8 @@ app.get("/home", (req, res) => {
 app.use(authRoutes);
 app.use(productRoutes);
 app.use(adminRoutes);
+app.use(checkoutRoutes);
+app.use(testRoutes);
 
 app.listen(3000);
 
