@@ -1,6 +1,6 @@
 const supabase = require("../../config/supabase");
 const fs = require("fs");
-const jsonData = JSON.parse(fs.readFileSync("./src/data/data.json", "utf-8"));
+// const jsonData = JSON.parse(fs.readFileSync("./src/data/data.json", "utf-8"));
 
 async function addTestData(req, res) {
   try {
