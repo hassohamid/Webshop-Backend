@@ -26,4 +26,6 @@ app.use(adminRoutes);
 app.use(checkoutRoutes);
 app.use(testRoutes);
 
+app.listen(3000);
+
 module.exports = app;
