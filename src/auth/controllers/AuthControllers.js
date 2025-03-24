@@ -1,5 +1,5 @@
 const supabase = require("../../config/supabase");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 async function register(req, res) {
